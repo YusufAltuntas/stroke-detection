@@ -58,23 +58,14 @@ Bu proje tek bir modelle sinirli DEGILDIR. Amac en iyi sonucu bulmaktir.
 - **DenseNet-121** (densenet): Planlanmis
 - **YOLO** (yolo): Planlanmis
 
-## Model Ortak Bilgileri
-- Framework: PyTorch
-- Input: 300x300 piksel, 3 kanal (RGB)
-- Sinif sayisi: 3 (ACA, MCA, PCA)
-- Loss: FocalLoss (gamma, alpha ayarlanabilir) veya CrossEntropyLoss
-- Optimizer: AdamW (lr=1e-4, weight_decay=1e-4)
-- Scheduler: CosineAnnealingWarmRestarts veya ReduceLROnPlateau
-- Dengeleme: WeightedRandomSampler (1/count)
 
 ## Convergence Kriterleri
-- 3 ardisik denemede val_accuracy artisi < 0.002 → hiperparametre optimizasyonu doyuma ulasti
-- 3 ardisik denemede macro_f1 artisi < 0.003 → ayni sonuc
+- 3 ardisik denemede val_accuracy ve macro&micro f1 scorelarda artış olmazsa model doyuma ulaştı
 - Farkli mimariler de ayni platoya ulasirsa → yeni model ailesi iste
 - HEDEFLER:
   - ACA Recall >= 0.85 (KRITIK — en zor sinif)
   - MCA Recall >= 0.85
-  - PCA Recall >= 0.80
+  - PCA Recall >= 0.85
   - Macro Recall >= 0.83
   - Macro F1 >= 0.80
 
@@ -91,12 +82,11 @@ Bu proje tek bir modelle sinirli DEGILDIR. Amac en iyi sonucu bulmaktir.
 - GCS Veri Seti: gs://stroke-detection/data/flattened_images/ (ACA/, MCA/, PCA/)
 - Machine type: n1-standard-4 + NVIDIA_TESLA_T4 (1 GPU)
 - Notebook execution: Vertex AI Workbench Executor
-
+stroke-detection/data/stroke_dataset/stroke_dataset
 ## Veri Erisimi (Vertex AI)
 Notebook'lar Vertex AI Workbench'te calisirken GCS'den veri indirir:
-- GCS kaynak: gs://stroke-detection/data/flattened_images/
+- GCS kaynak: gs://stroke-detection/data/stroke_dataset/stroke_dataset bu klasör altında aca, mca ve pca klasörlerine ayrılmış durumda
 - Yerel hedef: /tmp/data/flattened_images/
-- Ortam tespiti: Kaggle path'i varsa Kaggle, yoksa GCS'den indir
 - Her notebook'un baslangicinda GCS setup hucresi OLMALI
 
 ## Otonom Calisma Modu
