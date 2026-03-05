@@ -78,8 +78,8 @@ Bu proje tek bir modelle sinirli DEGILDIR. Amac en iyi sonucu bulmaktir.
 ## Vertex AI Config
 - Project: stroke-detection-489321
 - Region: europe-central2
-- GCS Bucket: gs://stroke-detection/experiments/
-- GCS Veri Seti: gs://stroke-detection/data/flattened_images/ (ACA/, MCA/, PCA/)
+- GCS Bucket: gs://stroke-detection/experiments/ (ilk deploy oncesi olusturulmali)
+- GCS Veri Seti: gs://stroke-detection/data/stroke_dataset/stroke_dataset/ (ACA/, MCA/, PCA/)
 - Machine type: n1-standard-4 + NVIDIA_TESLA_T4 (1 GPU)
 - Notebook execution: Vertex AI Workbench Executor
 stroke-detection/data/stroke_dataset/stroke_dataset
@@ -87,6 +87,9 @@ stroke-detection/data/stroke_dataset/stroke_dataset
 Notebook'lar Vertex AI Workbench'te calisirken GCS'den veri indirir:
 - GCS kaynak: gs://stroke-detection/data/stroke_dataset/stroke_dataset bu klasör altında aca, mca ve pca klasörlerine ayrılmış durumda
 - Yerel hedef: /tmp/data/flattened_images/
+- GCS kaynak: gs://stroke-detection/data/stroke_dataset/stroke_dataset/
+- Yerel hedef: /tmp/data/stroke_dataset/stroke_dataset/
+- Ortam tespiti: Kaggle path'i varsa Kaggle, yoksa GCS'den indir
 - Her notebook'un baslangicinda GCS setup hucresi OLMALI
 
 ## Otonom Calisma Modu
