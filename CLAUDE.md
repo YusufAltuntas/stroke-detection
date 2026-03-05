@@ -57,10 +57,23 @@ Cascaded yaklasim — Stage 2: Stroke olarak tespit edilen goruntulerde arter si
 
 ## Vertex AI Config
 - Project: stroke-detection-489321
-- Region: europe-west3
+- Region: europe-central2
 - GCS Bucket: gs://stroke-detection/experiments/
 - Machine type: n1-standard-4 + NVIDIA_TESLA_T4 (1 GPU)
 - Notebook execution: Vertex AI Workbench Executor
+
+## Otonom Calisma Modu
+Claude yeni bir deney baslatirken:
+1. Onceki TUM notebook'lari (notebooks/base/) analiz eder
+2. Her deneydeki hiperparametreleri, yaklasimlari ve sonuclari cikarir
+3. Neyin ise yaradigini, neyin yaramadigini belirler
+4. Bir sonraki deney icin en mantikli hiperparametre + strateji kombinasyonunu KENDISI secer
+5. Kullanici sadece model adini verir, gerisini Claude planlar
+6. Her karar icin GEREKCE yazar (neden bu parametreyi sectim)
+
+Ornek akis:
+- Kullanici: "/new-experiment model=efficientnet-b3"
+- Claude: Onceki 4 notebook'u inceler → v2'de ACA artti ama MCA dustu → v3'te denge iyilesti ama hala ACA < 0.85 → Sonraki adim: gamma=1.3, weight_power=0.6, lr=5e-5 dene (sebep: ...)
 
 ## Notebook Format
 Her notebook su bolumlerden olusur:
