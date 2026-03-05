@@ -51,12 +51,12 @@ Her yeni notebook'ta su hucre yapisi kullanilmali:
 1. Markdown: Baslik, hipotez, strateji aciklamasi
 2. Code — Imports: Tum import'lar
 3. Code — Parametreler (PAPERMILL TAGGED): metadata: {"tags": ["parameters"]}
-   - GCS_DATA_PATH = 'gs://stroke-detection/data/flattened_images/'
+   - GCS_DATA_PATH = 'gs://stroke-detection/data/stroke_dataset/stroke_dataset/'
    - IMG_SIZE, BATCH_SIZE, LEARNING_RATE, WEIGHT_DECAY, NUM_EPOCHS, GAMMA, WEIGHT_POWER, vs.
    - STROKE_IMAGES_DIR burada OLMAMALI
 4. Code — GCS Data Setup: Ortam tespiti + gsutil ile veri indirme
    - Kaggle path varsa → Kaggle kullan
-   - Yoksa → GCS'den /tmp/data/flattened_images/ altina indir
+   - Yoksa → GCS'den /tmp/data/stroke_dataset/stroke_dataset/ altina indir
    - STROKE_IMAGES_DIR burada belirlenir
 5. Code+: Veri hazirligi, model, egitim, test, sonuc ozeti
 
@@ -68,8 +68,8 @@ from pathlib import Path
 if os.path.exists('/kaggle/input/stroke-images/flattened_images'):
     STROKE_IMAGES_DIR = '/kaggle/input/stroke-images/flattened_images'
     print('Ortam: Kaggle')
-elif os.path.exists('/tmp/data/flattened_images') and len(os.listdir('/tmp/data/flattened_images')) >= 3:
-    STROKE_IMAGES_DIR = '/tmp/data/flattened_images'
+elif os.path.exists('/tmp/data/stroke_dataset/stroke_dataset') and len(os.listdir('/tmp/data/stroke_dataset/stroke_dataset')) >= 3:
+    STROKE_IMAGES_DIR = '/tmp/data/stroke_dataset/stroke_dataset'
     print('Ortam: Vertex AI — Veri zaten mevcut')
 else:
     print(f'GCS\'den veri indiriliyor: {GCS_DATA_PATH}')
@@ -77,7 +77,7 @@ else:
     result = subprocess.run(['gsutil', '-m', 'cp', '-r', GCS_DATA_PATH, '/tmp/data/'], capture_output=True, text=True)
     if result.returncode != 0:
         raise RuntimeError(f'GCS download failed: {result.stderr}')
-    STROKE_IMAGES_DIR = '/tmp/data/flattened_images'
+    STROKE_IMAGES_DIR = '/tmp/data/stroke_dataset/stroke_dataset'
 
 for cls in ['ACA', 'MCA', 'PCA']:
     count = len(list(Path(STROKE_IMAGES_DIR, cls).glob('*'))) if Path(STROKE_IMAGES_DIR, cls).exists() else 0
