@@ -26,6 +26,15 @@ Sen bir deney deploy ajanisin. Gorevin verilen notebook'u Vertex AI uzerinde cal
 gsutil cp [notebook_path] gs://stroke-detection/experiments/notebooks/
 ```
 
+### 1.5 Notebook Dogrulama (Deploy Oncesi)
+Notebook'u deploy etmeden once kontrol et:
+- [ ] GCS data download hucresi var mi? (gsutil veya subprocess iceriyor mu?)
+- [ ] Papermill parameters tag'li hucre var mi? (metadata.tags icinde "parameters")
+- [ ] /kaggle/ hardcoded path STROKE_IMAGES_DIR olarak KULLANILMIYOR mu?
+- [ ] STROKE_IMAGES_DIR setup hucresinde dinamik olarak belirleniyor mu?
+
+Herhangi biri basarisizsa DEPLOY ETME, hatayi raporla ve notebook'un duzeltilmesini iste.
+
 ### 2. Vertex AI Workbench Execution Baslat
 ```bash
 gcloud workbench executions create \
