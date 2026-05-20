@@ -1,0 +1,41 @@
+{
+  "status": "success",
+  "mode": "stage2_only",
+  "sourceType": "sample",
+  "sampleId": "mca-01",
+  "validationMessage": null,
+  "stage1": null,
+  "stage2": {
+    "stage": "stage2",
+    "modelName": "DenseNet-121",
+    "label": "MCA",
+    "confidence": 0.7104231119155884,
+    "probabilities": [
+      {
+        "label": "ACA",
+        "probability": 0.008347694762051105
+      },
+      {
+        "label": "MCA",
+        "probability": 0.7104231119155884
+      },
+      {
+        "label": "PCA",
+        "probability": 0.2812291085720062
+      }
+    ],
+    "skipped": false,
+    "message": null
+  },
+  "gradcam": {
+    "status": "available",
+    "stage": "stage2",
+    "images": {
+      "originalUrl": "/static/cache/mca-01/stage2-original.jpeg",
+      "heatmapUrl": "/static/cache/mca-01/stage2-heatmap.jpeg",
+      "overlayUrl": "/static/cache/mca-01/stage2-overlay.jpeg"
+    },
+    "message": null
+  },
+  "warnings": []
+}

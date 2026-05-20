@@ -1,0 +1,20 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libglib2.0-0 libgl1 \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY backend/requirements.txt /app/backend/requirements.txt
+RUN pip install --no-cache-dir -r /app/backend/requirements.txt
+
+COPY backend /app/backend
+COPY demo-assets /app/demo-assets
+COPY best_efficientnet_b3_A_fullstroke.pth /app/best_efficientnet_b3_A_fullstroke.pth
+COPY best_model_densenet_v1.pth /app/best_model_densenet_v1.pth
+
+ENV PYTHONPATH=/app/backend
+EXPOSE 8000
+
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

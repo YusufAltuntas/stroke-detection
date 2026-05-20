@@ -1,0 +1,22 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./demo-assets:/app/demo-assets
+      - ./best_efficientnet_b3_A_fullstroke.pth:/app/best_efficientnet_b3_A_fullstroke.pth:ro
+      - ./best_model_densenet_v1.pth:/app/best_model_densenet_v1.pth:ro
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    depends_on:
+      - backend

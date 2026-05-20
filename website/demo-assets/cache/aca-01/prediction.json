@@ -1,0 +1,58 @@
+{
+  "status": "success",
+  "mode": "full_pipeline",
+  "sourceType": "sample",
+  "sampleId": "aca-01",
+  "validationMessage": null,
+  "stage1": {
+    "stage": "stage1",
+    "modelName": "EfficientNet-B3",
+    "label": "Stroke Detected",
+    "confidence": 1.0,
+    "probabilities": [
+      {
+        "label": "No Stroke",
+        "probability": 0.0
+      },
+      {
+        "label": "Stroke",
+        "probability": 1.0
+      }
+    ],
+    "skipped": false,
+    "message": null
+  },
+  "stage2": {
+    "stage": "stage2",
+    "modelName": "DenseNet-121",
+    "label": "ACA",
+    "confidence": 0.7163622379302979,
+    "probabilities": [
+      {
+        "label": "ACA",
+        "probability": 0.7163622379302979
+      },
+      {
+        "label": "MCA",
+        "probability": 0.13813914358615875
+      },
+      {
+        "label": "PCA",
+        "probability": 0.14549857378005981
+      }
+    ],
+    "skipped": false,
+    "message": null
+  },
+  "gradcam": {
+    "status": "available",
+    "stage": "stage2",
+    "images": {
+      "originalUrl": "/static/cache/aca-01/stage2-original.jpeg",
+      "heatmapUrl": "/static/cache/aca-01/stage2-heatmap.jpeg",
+      "overlayUrl": "/static/cache/aca-01/stage2-overlay.jpeg"
+    },
+    "message": null
+  },
+  "warnings": []
+}

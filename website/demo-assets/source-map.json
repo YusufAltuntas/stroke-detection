@@ -1,0 +1,32 @@
+{
+  "samples": [
+    {
+      "id": "normal-01",
+      "displayName": "Normal-01",
+      "labelGroup": "Normal",
+      "image": "samples/normal-01.jpeg",
+      "thumbnail": "thumbnails/normal-01.jpeg"
+    },
+    {
+      "id": "aca-01",
+      "displayName": "ACA-01",
+      "labelGroup": "ACA",
+      "image": "samples/aca-01.jpeg",
+      "thumbnail": "thumbnails/aca-01.jpeg"
+    },
+    {
+      "id": "mca-01",
+      "displayName": "MCA-01",
+      "labelGroup": "MCA",
+      "image": "samples/mca-01.jpeg",
+      "thumbnail": "thumbnails/mca-01.jpeg"
+    },
+    {
+      "id": "pca-01",
+      "displayName": "PCA-01",
+      "labelGroup": "PCA",
+      "image": "samples/pca-01.jpeg",
+      "thumbnail": "thumbnails/pca-01.jpeg"
+    }
+  ]
+}
