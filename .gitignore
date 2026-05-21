@@ -1,1 +1,24 @@
 stroke_dataset/
+
+# raw patient-named source files — never push (PHI risk)
+website/normal-samples/
+
+# macOS / IDE noise
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+
+# Logs / scratch
+*.log
+agentic_news_test.db
+website/.agents/

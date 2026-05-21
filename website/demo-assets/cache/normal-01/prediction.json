@@ -1,43 +1,39 @@
 {
   "status": "success",
-  "mode": "full_pipeline",
+  "mode": "stage2_only",
   "sourceType": "sample",
   "sampleId": "normal-01",
   "validationMessage": null,
-  "stage1": {
-    "stage": "stage1",
-    "modelName": "EfficientNet-B3",
-    "label": "No Stroke Detected",
-    "confidence": 0.9999645780080755,
+  "stage1": null,
+  "stage2": {
+    "stage": "stage2",
+    "modelName": "DenseNet-121",
+    "label": "PCA",
+    "confidence": 0.5581237077713013,
     "probabilities": [
       {
-        "label": "No Stroke",
-        "probability": 0.9999645780080755
+        "label": "ACA",
+        "probability": 0.0042204707860946655
       },
       {
-        "label": "Stroke",
-        "probability": 3.5421991924522445e-05
+        "label": "MCA",
+        "probability": 0.43765580654144287
+      },
+      {
+        "label": "PCA",
+        "probability": 0.5581237077713013
       }
     ],
     "skipped": false,
     "message": null
   },
-  "stage2": {
-    "stage": "stage2",
-    "modelName": "DenseNet-121",
-    "label": "Not run",
-    "confidence": 0.0,
-    "probabilities": [],
-    "skipped": true,
-    "message": "Inme saptanmadigi icin arter siniflandirmasi calistirilmadi."
-  },
   "gradcam": {
     "status": "available",
-    "stage": "stage1",
+    "stage": "stage2",
     "images": {
-      "originalUrl": "/static/cache/normal-01/stage1-original.jpeg",
-      "heatmapUrl": "/static/cache/normal-01/stage1-heatmap.jpeg",
-      "overlayUrl": "/static/cache/normal-01/stage1-overlay.jpeg"
+      "originalUrl": "/static/cache/normal-01/stage2-original.jpeg",
+      "heatmapUrl": "/static/cache/normal-01/stage2-heatmap.jpeg",
+      "overlayUrl": "/static/cache/normal-01/stage2-overlay.jpeg"
     },
     "message": null
   },

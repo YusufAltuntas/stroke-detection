@@ -94,8 +94,24 @@ class ExperimentRow(BaseModel):
     acaF1: float | None = None
     mcaF1: float | None = None
     pcaF1: float | None = None
+    acaRecall: float | None = None
+    mcaRecall: float | None = None
+    pcaRecall: float | None = None
     strategy: str
+    strategyDetail: str | None = None
     selected: bool = False
+
+
+class ConfusionMatrix(BaseModel):
+    classes: list[str]
+    matrix: list[list[int]]
+
+
+class Stage1Summary(BaseModel):
+    title: str
+    description: str
+    approach: list[str]
+    note: str
 
 
 class ResultsResponse(BaseModel):
@@ -107,3 +123,6 @@ class ResultsResponse(BaseModel):
     stage2PerClass: list[dict[str, float | str]]
     limitations: list[str]
     confusionMatricesAvailable: bool
+    stage1ConfusionMatrix: ConfusionMatrix | None = None
+    stage2ConfusionMatrix: ConfusionMatrix | None = None
+    stage1Summary: Stage1Summary | None = None

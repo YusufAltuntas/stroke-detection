@@ -1,10 +1,27 @@
 {
   "status": "success",
-  "mode": "stage2_only",
+  "mode": "full_pipeline",
   "sourceType": "sample",
   "sampleId": "pca-01",
   "validationMessage": null,
-  "stage1": null,
+  "stage1": {
+    "stage": "stage1",
+    "modelName": "EfficientNet-B3",
+    "label": "Stroke Detected",
+    "confidence": 1.0,
+    "probabilities": [
+      {
+        "label": "No Stroke",
+        "probability": 0.0
+      },
+      {
+        "label": "Stroke",
+        "probability": 1.0
+      }
+    ],
+    "skipped": false,
+    "message": null
+  },
   "stage2": {
     "stage": "stage2",
     "modelName": "DenseNet-121",
